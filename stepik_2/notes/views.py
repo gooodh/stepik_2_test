@@ -16,7 +16,7 @@ class HomePageView(TemplateView):
 class NoteListView(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = 'note_list'
-    template_name = 'notes/book_list.html'
+    template_name = 'notes/note_list.html'
     login_url = 'login'
 
     def get_queryset(self):
@@ -35,6 +35,6 @@ class NoteCreate(LoginRequiredMixin, CreateView):
     template_name = 'notes/create.html'
     # На какую страницу будет перенаправление
     # в случае успешного сохранения формы
-    success_url = '/'
+    success_url = '/home/'
     login_url = 'login'  # new
     permission_required = 'notes.special_status'
