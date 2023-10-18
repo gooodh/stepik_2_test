@@ -1,0 +1,25 @@
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+pip freeze > requirements.txt
+django-admin.py startproject config .
+python manage.py runserver
+python manage.py startapp notes
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser admin stqhJQmh admin@books.bo
+
+docker compose up -d --build
+docker compose down
+
+
+docker compose exec web python manage.py makemigrations
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py collectstatic --noinput
+docker compose exec db_books psql --username=postgres --dbname=postgres
+
+git status
+git add .
+git commit -m ' '
+git push
