@@ -1,13 +1,13 @@
 <html>
 <head>
-<title>Create a Post </title>
+<title> add_note </title>
 </head>
 
 <body>
-<h1>Create a Post </h1>
-<form action="" method="POST">
+<form method="POST" action=''>
+
 {% csrf_token %}
-Title: <input type="note_text" name="note_text"/><br/>
+<input type="note_text" name="note_text"/>
 
 <button type="submit" class="btn btn-success">Добавить</button>
 </form>

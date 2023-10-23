@@ -1,12 +1,15 @@
 from django.contrib.auth.mixins import (LoginRequiredMixin)
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 # from django.views.generic import CreateView  # new
 
 from .models import Note
 
 from .forms import NoteForm
 from django.views.generic import TemplateView, ListView
+from django.conf import settings
+from django.shortcuts import redirect
+
 
 
 class HomePageView(TemplateView):
@@ -24,7 +27,9 @@ class NoteListView(LoginRequiredMixin, ListView):
 
 
 def createpost(request):
-    if request.method == 'POST':
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif request.method == 'POST':
         if request.POST.get('note_text'):
             note = Note()
             note.note_text = request.POST.get('note_text')
@@ -35,6 +40,7 @@ def createpost(request):
 
     else:
         return render(request, 'notes/create.html')
+
 
 # class NoteCreate(LoginRequiredMixin, CreateView):
 #     # Модель куда выполняется сохранение
@@ -55,11 +61,9 @@ def createpost(request):
 #     def snippet_detail(request):
 #         model = Note
 #         form = NoteForm(request.POST)
-#         print('snip')
 #         if request.method == 'POST':
-#             print('post')
 #             if form.is_valid():
-#                 print('valid')
+
 
 #                 model.owner = request.user
 #                 model.save()

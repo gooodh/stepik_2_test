@@ -1,13 +1,10 @@
 
-{% block title %}Notes{% endblock title %}
+
 {% block content %}
-<h1>Заметки {{ note.owner }}</h1>
+
 {% for note in note_list %}
 <div>
-    <p>note: {{ note.note_text }}</p>
-    <p>owner: {{ note.owner }}</p>
-    <p>______________________________________</p>
-    
+    <p class="my-note">{{ note.note_text }}</p>
 
 </div>
 {% endfor %}
