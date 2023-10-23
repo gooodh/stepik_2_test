@@ -9,7 +9,7 @@ class NoteForm(ModelForm):
         # которой создается форма
         model = Note
         # Включаем все поля с модели в форму
-        fields = '__all__'
+        fields = ['note_text',]
         widgets = {
             'title': TextInput(attrs={
                 'class': 'form-control',

@@ -1,13 +1,15 @@
-{% extends 'notes/base.html' %}
-{% block title %}Добавить заметку{% endblock title %}
+<html>
+<head>
+<title>Create a Post </title>
+</head>
 
+<body>
+<h1>Create a Post </h1>
+<form action="" method="POST">
+{% csrf_token %}
+Title: <input type="note_text" name="note_text"/><br/>
 
-{% block content %}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <!-- Выводим каждое поле формы в отдельном параграфе -->
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Добавить</button>
+<button type="submit" class="btn btn-success">Добавить</button>
 </form>
-{% endblock content %}
-<!-- Выводим уже созданные записи -->
+</body>
+</html>

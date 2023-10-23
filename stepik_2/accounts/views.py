@@ -11,6 +11,5 @@ class SignupPageView(generic.CreateView):
 
 
 class LogoutPageView(generic.CreateView):
-    form_class = CustomUserCreationForm
     success_url = reverse_lazy('home')
     template_name = 'registration/logout.html'
